@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="p_hrm"> 
+	<select id="findAllPatients" resultType="Patient">
+		select pno, name, age, ccode
+		from patient order by pno
+	</select>
+
+
+	<select id="findPatientById" resultType="Patient">
+		select pno, name, age, ccode
+		from patient where pno= #{pno}
+	</select>
+
+
+	<insert id="addPatient">
+		INSERT INTO patient
+		(pno, name, age, ccode)
+		values (#{pno},#{name},#{age},#{ccode})
+	</insert>
+
+	<update id="updatePatient">
+		UPDATE patient SET
+		name=#{name}, age=#{age}, ccode= #{ccode}
+		WHERE pno=#{pno}
+	</update>
+
+	<delete id="deletePatient">
+		DELETE FROM patient WHERE pno=#{pno}
+	</delete>
+</mapper>
+
+
+
